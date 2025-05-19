@@ -36,9 +36,9 @@ class Game:
         self.count += 1
         if self.count == 60:
             self.count = 0
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_SPACE]:
-                self.shapes.add(some_shape((300,300), (255,0,0), (10,10), (100, 50), random.randint(0,1)))
+            # keys = pygame.key.get_pressed()
+            # if keys[pygame.K_SPACE]:
+            self.shapes.add(some_shape((300,300), (random.randrange(0,255),random.randrange(0,255), random.randrange(0,255)), (10,10), (100, 50), random.randint(0,1)))
 
 class some_shape(pygame.sprite.Sprite):
     def __init__(self, pos, color, speed, scale, shape):
@@ -56,7 +56,7 @@ class some_shape(pygame.sprite.Sprite):
         elif shape == 1:
             self.image = pygame.Surface((self.scale[0]*2, self.scale[1]*2))
             self.image.set_colorkey((0,0,0))
-            pygame.draw.circle(self.image, (255,0,0), (self.scale[0], self.scale[0]), self.scale[0])
+            pygame.draw.circle(self.image, self.color, (self.scale[0], self.scale[0]), self.scale[0])
     def update(self):
         self.x += self.vel[0]
         self.y += self.vel[1]
